@@ -21,4 +21,5 @@ InsertLineCommand::InsertLineCommand(const string& _inserted_string,
 void InsertLineCommand::Execute() {
   text->InsertAfterLine(line, inserted_string);
 }
-void InsertLineCommand::Undo(){}
+
+void InsertLineCommand::Undo() { text->DeleteLine(line + 1); }
