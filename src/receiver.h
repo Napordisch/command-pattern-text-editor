@@ -8,11 +8,8 @@ using std::string;
 class Receiver {
  private:
   string content;
-
   void PrintLineNumber(unsigned int line_number) const;
-
   unsigned int amount_of_lines;
-
   unsigned int CountLines();
 
  public:
