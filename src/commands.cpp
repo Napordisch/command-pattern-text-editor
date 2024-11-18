@@ -23,3 +23,11 @@ void InsertLineCommand::Execute() {
 }
 
 void InsertLineCommand::Undo() { text->DeleteLine(line + 1); }
+
+PrependLineCommand::PrependLineCommand(const string& _prepended_string,
+                                       Receiver* _text)
+    : prepended_string(_prepended_string), Command(_text) {}
+
+void PrependLineCommand::Execute() { text->PrependLine(prepended_string); }
+
+void PrependLineCommand::Undo() { text->DeleteLine(1); }

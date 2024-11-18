@@ -5,7 +5,7 @@
 
 using std::string;
 
-void Receiver::PrintLineNumber(unsigned int line_number) {
+void Receiver::PrintLineNumber(unsigned int line_number) const{
   using std::cout;
   if (line_number < 10) cout << ' ';
   cout << line_number << '|' << ' ';
@@ -36,7 +36,7 @@ void Receiver::PrependLine(const string& prepended_string) {
   content = prepended_string + "\n" + content;
 }
 
-void Receiver::Show() {
+void Receiver::Show() const{
   using std::cout;
   if (content.empty()) return;
   unsigned int current_line = 1;

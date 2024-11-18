@@ -9,7 +9,7 @@ class Receiver {
  private:
   string content;
 
-  void PrintLineNumber(unsigned int line_number);
+  void PrintLineNumber(unsigned int line_number) const;
 
   unsigned int amount_of_lines;
 
@@ -19,7 +19,7 @@ class Receiver {
   Receiver(const std::string& starting_line);
   void AppendLine(const string& appended_string);
   void PrependLine(const string& prepended_string);
-  void Show();
+  void Show() const;
 
   void DeleteLine(unsigned int line_number);
 

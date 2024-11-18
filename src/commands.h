@@ -42,4 +42,16 @@ class InsertLineCommand : public Command {
   void Undo() override;
 };
 
+class PrependLineCommand : public Command {
+ private:
+  std::string prepended_string;
+
+ public:
+  PrependLineCommand(const string &_prepended_string, Receiver *_text);
+
+  void Execute() override;
+
+  void Undo() override;
+};
+
 #endif
