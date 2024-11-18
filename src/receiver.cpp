@@ -5,7 +5,7 @@
 
 using std::string;
 
-void Receiver::PrintLineNumber(unsigned int line_number) const{
+void Receiver::PrintLineNumber(unsigned int line_number) const {
   using std::cout;
   if (line_number < 10) cout << ' ';
   cout << line_number << '|' << ' ';
@@ -36,7 +36,7 @@ void Receiver::PrependLine(const string& prepended_string) {
   content = prepended_string + "\n" + content;
 }
 
-void Receiver::Show() const{
+void Receiver::Show() const {
   using std::cout;
   if (content.empty()) return;
   unsigned int current_line = 1;
@@ -59,7 +59,8 @@ std::string Receiver::DeleteLine(unsigned int line_number) {
   for (char i : content) {
     if (i == '\n') {
       if (current_line == line_number) {
-        deleted_line = content.substr(line_start, current_character - line_start + 1);
+        deleted_line =
+            content.substr(line_start, current_character - line_start);
         content.erase(line_start, current_character - line_start + 1);
         --amount_of_lines;
         break;
@@ -69,7 +70,8 @@ std::string Receiver::DeleteLine(unsigned int line_number) {
       }
     } else if (current_character == content.length() - 1 &&
                current_line == line_number) {
-      deleted_line = content.substr(line_start, current_character - line_start + 1);
+      deleted_line =
+          content.substr(line_start, current_character - line_start + 1);
       content.erase(line_start, current_character - line_start + 1);
       content.erase(content.length() - 1, 1);
     }

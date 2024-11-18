@@ -57,6 +57,7 @@ class PrependLineCommand : public Command {
 class DeleteLineCommand : public Command {
  private:
   unsigned int line;
+  std::string deleted_string;
 
  public:
   DeleteLineCommand(unsigned int _line, Receiver *_text);

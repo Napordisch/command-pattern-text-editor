@@ -31,6 +31,9 @@ int main() {
   delete_second_line->Execute();
   PrintDocWithNewlines(text_doc);
 
+  delete_second_line->Undo();
+  PrintDocWithNewlines(text_doc);
+
   delete insert_line_command;
   delete prepend_line_command;
 }

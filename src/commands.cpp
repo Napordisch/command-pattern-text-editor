@@ -35,6 +35,8 @@ void PrependLineCommand::Undo() { text->DeleteLine(1); }
 DeleteLineCommand::DeleteLineCommand(unsigned int _line, Receiver* _text)
     : line(_line), Command(_text) {}
 
-void DeleteLineCommand::Execute() { text->DeleteLine(line); }
+void DeleteLineCommand::Execute() { deleted_string = text->DeleteLine(line); }
 
-void DeleteLineCommand::Undo() {}
+void DeleteLineCommand::Undo() {
+  text->InsertAfterLine(line - 1, deleted_string);
+}
