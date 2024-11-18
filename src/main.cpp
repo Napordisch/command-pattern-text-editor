@@ -4,7 +4,7 @@
 #include "commands.h"
 #include "receiver.h"
 
-void PrintDocWithNewlines(const Receiver& _text_doc){
+void PrintDocWithNewlines(const Receiver& _text_doc) {
   std::cout << '\n';
   _text_doc.Show();
   std::cout << '\n';
