@@ -1,12 +1,13 @@
-#include "commands.h"
-#include "receiver.h"
 #include <iostream>
 #include <string>
 
+#include "commands.h"
+#include "receiver.h"
+
 int main() {
-    Receiver text_doc("test line");
-    Command* append_second_string = new AppendLineCommand("second_line", &text_doc);
-    append_second_string->Execute();
-    text_doc.Show();
-    delete append_second_string;
+  Receiver text_doc("test line\nsecond init line");
+  Command* insert_line_command = new InsertLineCommand("inserted string", &text_doc, 1);
+  insert_line_command->Execute();
+  text_doc.Show();
+  delete insert_line_command;
 }

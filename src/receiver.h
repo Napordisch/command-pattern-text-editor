@@ -6,24 +6,25 @@
 
 using std::string;
 class Receiver {
-    private:
-        string content;
+ private:
+  string content;
 
-        void PrintLineNumber(unsigned int line_number);
+  void PrintLineNumber(unsigned int line_number);
 
-        unsigned int amount_of_lines;
+  unsigned int amount_of_lines;
 
-        unsigned int CountLines();
-    public:
-        Receiver (const std::string& starting_line);
-        void AppendLine(const string& appended_string);
-        void PrependLine(const string& prepended_string);
-        void Show();
+  unsigned int CountLines();
 
-        void DeleteLine(unsigned int line_number);
+ public:
+  Receiver(const std::string& starting_line);
+  void AppendLine(const string& appended_string);
+  void PrependLine(const string& prepended_string);
+  void Show();
 
-        void DeleteLastLine();
+  void DeleteLine(unsigned int line_number);
 
-        void InsertAfterLine(unsigned int line_number, std::string inserted_string);
+  void DeleteLastLine();
+
+  void InsertAfterLine(unsigned int line_number, std::string inserted_string);
 };
 #endif

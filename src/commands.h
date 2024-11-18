@@ -32,9 +32,11 @@ class AppendLineCommand : public Command {
 class InsertLineCommand : public Command {
  private:
   std::string inserted_string;
+  unsigned int line;  // after which to insert
 
  public:
-  InsertLineCommand(const string &_inserted_string, Receiver *_text);
+  InsertLineCommand(const string &_inserted_string, Receiver *_text,
+                    unsigned int _line);
 
   void Execute() override;
   void Undo() override;
