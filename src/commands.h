@@ -7,21 +7,21 @@
 using std::string;
 
 class Command {
- protected:
+protected:
   Receiver *text;
 
- public:
+public:
   Command(Receiver *_text);
   virtual void Execute() = 0;
   virtual void Undo() = 0;
-  virtual ~Command() {};
+  virtual ~Command(){};
 };
 
 class AppendLineCommand : public Command {
- private:
+private:
   std::string appended_string;
 
- public:
+public:
   AppendLineCommand(const string &_appended_string, Receiver *_text);
 
   void Execute() override;
@@ -30,11 +30,11 @@ class AppendLineCommand : public Command {
 };
 
 class InsertLineCommand : public Command {
- private:
+private:
   std::string inserted_string;
-  unsigned int line;  // after which to insert
+  unsigned int line; // after which to insert
 
- public:
+public:
   InsertLineCommand(const string &_inserted_string, Receiver *_text,
                     unsigned int _line);
 
@@ -43,10 +43,10 @@ class InsertLineCommand : public Command {
 };
 
 class PrependLineCommand : public Command {
- private:
+private:
   std::string prepended_string;
 
- public:
+public:
   PrependLineCommand(const string &_prepended_string, Receiver *_text);
 
   void Execute() override;
@@ -55,23 +55,24 @@ class PrependLineCommand : public Command {
 };
 
 class DeleteLineCommand : public Command {
- private:
+private:
   unsigned int line;
   std::string deleted_string;
 
- public:
+public:
   DeleteLineCommand(unsigned int _line, Receiver *_text);
   void Execute() override;
   void Undo() override;
 };
 
 class DeleteLastLineCommand : public Command {
- private:
+private:
   std::string deleted_string;
-  public:
-   DeleteLastLineCommand(Receiver *_text);
-   void Execute() override;
-   void Undo() override;
+
+public:
+  DeleteLastLineCommand(Receiver *_text);
+  void Execute() override;
+  void Undo() override;
 };
 
 #endif

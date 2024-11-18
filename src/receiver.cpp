@@ -100,3 +100,6 @@ void Receiver::InsertAfterLine(unsigned int line_number,
     ++current_character;
   }
 }
+std::string Receiver::GetContent() {
+  return content;
+}

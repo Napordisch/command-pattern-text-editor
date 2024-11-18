@@ -1,47 +1,17 @@
 #include <iostream>
 #include <string>
 
-#include "commands.h"
 #include "receiver.h"
+#include "shell.h"
 
-void PrintDocWithNewlines(const Receiver& _text_doc) {
+void PrintDocWithNewlines(const Receiver &_text_doc) {
   std::cout << '\n';
   _text_doc.Show();
   std::cout << '\n';
 }
 
 int main() {
-  Receiver text_doc("test line\nsecond init line");
-
-  Command* insert_line_command =
-      new InsertLineCommand("inserted string", &text_doc, 1);
-
-  insert_line_command->Execute();
-  PrintDocWithNewlines(text_doc);
-
-  insert_line_command->Undo();
-  PrintDocWithNewlines(text_doc);
-
-  Command* prepend_line_command =
-      new PrependLineCommand("prepended string", &text_doc);
-  prepend_line_command->Execute();
-  PrintDocWithNewlines(text_doc);
-
-  Command* delete_second_line = new DeleteLineCommand(2, &text_doc);
-  delete_second_line->Execute();
-  PrintDocWithNewlines(text_doc);
-
-  delete_second_line->Undo();
-  PrintDocWithNewlines(text_doc);
-
-  Command* delete_last_line = new DeleteLastLineCommand(&text_doc);
-  delete_last_line->Execute();
-  PrintDocWithNewlines(text_doc);
-
-  delete_last_line->Undo();
-  PrintDocWithNewlines(text_doc);
-
-  delete insert_line_command;
-  delete prepend_line_command;
-  delete delete_last_line;
+  Receiver document("test start");
+  Shell UI(&document);
+  UI.RunUI();
 }

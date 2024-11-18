@@ -5,3 +5,5 @@ Very simple text editor designed using command pattern. It only operates with li
 `p <content>` - prepend \
 `d <number>` - delete line \
 `b` - delete last line
+`u` - undo
+`r` - redo
