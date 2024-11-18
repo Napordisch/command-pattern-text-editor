@@ -20,11 +20,8 @@ class Receiver {
   void AppendLine(const string& appended_string);
   void PrependLine(const string& prepended_string);
   void Show() const;
-
   std::string DeleteLine(unsigned int line_number);
-
   std::string DeleteLastLine();
-
   void InsertAfterLine(unsigned int line_number, std::string inserted_string);
 };
 #endif
