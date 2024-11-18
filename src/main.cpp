@@ -27,8 +27,10 @@ int main() {
   prepend_line_command->Execute();
   PrintDocWithNewlines(text_doc);
 
-  prepend_line_command->Undo();
+  Command* delete_second_line = new DeleteLineCommand(2, &text_doc);
+  delete_second_line->Execute();
   PrintDocWithNewlines(text_doc);
+
   delete insert_line_command;
   delete prepend_line_command;
 }

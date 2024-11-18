@@ -21,7 +21,7 @@ class Receiver {
   void PrependLine(const string& prepended_string);
   void Show() const;
 
-  void DeleteLine(unsigned int line_number);
+  std::string DeleteLine(unsigned int line_number);
 
   void DeleteLastLine();
 

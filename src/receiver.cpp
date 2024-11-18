@@ -51,13 +51,15 @@ void Receiver::Show() const{
   cout << '\n';
 }
 
-void Receiver::DeleteLine(unsigned int line_number) {
+std::string Receiver::DeleteLine(unsigned int line_number) {
   unsigned int current_line = 1;
   unsigned int current_character = 0;
   unsigned int line_start = 0;
+  std::string deleted_line;
   for (char i : content) {
     if (i == '\n') {
       if (current_line == line_number) {
+        deleted_line = content.substr(line_start, current_character - line_start + 1);
         content.erase(line_start, current_character - line_start + 1);
         --amount_of_lines;
         break;
@@ -67,11 +69,13 @@ void Receiver::DeleteLine(unsigned int line_number) {
       }
     } else if (current_character == content.length() - 1 &&
                current_line == line_number) {
+      deleted_line = content.substr(line_start, current_character - line_start + 1);
       content.erase(line_start, current_character - line_start + 1);
       content.erase(content.length() - 1, 1);
     }
     ++current_character;
   }
+  return deleted_line;
 }
 
 void Receiver::DeleteLastLine() { DeleteLine(amount_of_lines); }

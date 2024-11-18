@@ -31,3 +31,10 @@ PrependLineCommand::PrependLineCommand(const string& _prepended_string,
 void PrependLineCommand::Execute() { text->PrependLine(prepended_string); }
 
 void PrependLineCommand::Undo() { text->DeleteLine(1); }
+
+DeleteLineCommand::DeleteLineCommand(unsigned int _line, Receiver* _text)
+    : line(_line), Command(_text) {}
+
+void DeleteLineCommand::Execute() { text->DeleteLine(line); }
+
+void DeleteLineCommand::Undo() {}

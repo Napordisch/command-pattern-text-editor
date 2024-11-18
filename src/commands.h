@@ -54,4 +54,14 @@ class PrependLineCommand : public Command {
   void Undo() override;
 };
 
+class DeleteLineCommand : public Command {
+ private:
+  unsigned int line;
+
+ public:
+  DeleteLineCommand(unsigned int _line, Receiver *_text);
+  void Execute() override;
+  void Undo() override;
+};
+
 #endif
