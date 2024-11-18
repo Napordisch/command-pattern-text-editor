@@ -2,28 +2,42 @@
 #define COMMANDS_H
 
 #include <string>
+
 #include "receiver.h"
 using std::string;
 
 class Command {
-    public:
-        virtual void Execute() = 0;
-        virtual void Undo() = 0;
-        virtual ~Command() {};
+ protected:
+  Receiver *text;
+
+ public:
+  Command(Receiver *_text);
+  virtual void Execute() = 0;
+  virtual void Undo() = 0;
+  virtual ~Command() {};
 };
 
 class AppendLineCommand : public Command {
-    
-    private:
-        Receiver* text;
-        std::string appended_string;
+ private:
+  std::string appended_string;
 
-    public:
-        AppendLineCommand(const string& _appended_string, Receiver* _text);
+ public:
+  AppendLineCommand(const string &_appended_string, Receiver *_text);
 
-        void Execute() override;
+  void Execute() override;
 
-        void Undo() override;
+  void Undo() override;
+};
+
+class InsertLineCommand : public Command {
+ private:
+  std::string inserted_string;
+
+ public:
+  InsertLineCommand(const string &_inserted_string, Receiver *_text);
+
+  void Execute() override;
+  void Undo() override;
 };
 
 #endif
