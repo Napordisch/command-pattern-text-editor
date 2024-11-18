@@ -34,6 +34,14 @@ int main() {
   delete_second_line->Undo();
   PrintDocWithNewlines(text_doc);
 
+  Command* delete_last_line = new DeleteLastLineCommand(&text_doc);
+  delete_last_line->Execute();
+  PrintDocWithNewlines(text_doc);
+
+  delete_last_line->Undo();
+  PrintDocWithNewlines(text_doc);
+
   delete insert_line_command;
   delete prepend_line_command;
+  delete delete_last_line;
 }

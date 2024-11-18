@@ -80,7 +80,7 @@ std::string Receiver::DeleteLine(unsigned int line_number) {
   return deleted_line;
 }
 
-void Receiver::DeleteLastLine() { DeleteLine(amount_of_lines); }
+std::string Receiver::DeleteLastLine() { return DeleteLine(amount_of_lines); }
 
 void Receiver::InsertAfterLine(unsigned int line_number,
                                std::string inserted_string) {

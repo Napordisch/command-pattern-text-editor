@@ -65,4 +65,13 @@ class DeleteLineCommand : public Command {
   void Undo() override;
 };
 
+class DeleteLastLineCommand : public Command {
+ private:
+  std::string deleted_string;
+  public:
+   DeleteLastLineCommand(Receiver *_text);
+   void Execute() override;
+   void Undo() override;
+};
+
 #endif

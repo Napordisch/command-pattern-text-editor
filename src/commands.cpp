@@ -40,3 +40,14 @@ void DeleteLineCommand::Execute() { deleted_string = text->DeleteLine(line); }
 void DeleteLineCommand::Undo() {
   text->InsertAfterLine(line - 1, deleted_string);
 }
+
+DeleteLastLineCommand::DeleteLastLineCommand(Receiver* _text)
+    : Command(_text) {}
+
+void DeleteLastLineCommand::Execute() {
+  deleted_string = text->DeleteLastLine();
+}
+
+void DeleteLastLineCommand::Undo() {
+  text->AppendLine(deleted_string);
+}

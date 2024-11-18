@@ -23,7 +23,7 @@ class Receiver {
 
   std::string DeleteLine(unsigned int line_number);
 
-  void DeleteLastLine();
+  std::string DeleteLastLine();
 
   void InsertAfterLine(unsigned int line_number, std::string inserted_string);
 };
