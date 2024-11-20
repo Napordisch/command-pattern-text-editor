@@ -94,11 +94,13 @@ void Receiver::InsertAfterLine(unsigned int line_number,
           inserted_string += '\n';
         }
         content.insert(current_character + 1, inserted_string);
+        return;
       }
       ++current_line;
     }
     ++current_character;
   }
+  content.append('\n' + inserted_string);
 }
 std::string Receiver::GetContent() {
   return content;
