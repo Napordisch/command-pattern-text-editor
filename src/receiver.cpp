@@ -77,6 +77,7 @@ std::string Receiver::DeleteLine(unsigned int line_number) {
     }
     ++current_character;
   }
+  --amount_of_lines;
   return deleted_line;
 }
 
