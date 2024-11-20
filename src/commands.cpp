@@ -10,6 +10,8 @@ AppendLineCommand::AppendLineCommand(const string& _appended_string,
                                      Receiver* _text)
     : appended_string(_appended_string), Command(_text) {}
 
+AppendLineCommand::AppendLineCommand(Receiver* _text) : Command(_text) {}
+
 void AppendLineCommand::Execute() { text->AppendLine(appended_string); }
 
 void AppendLineCommand::Undo() { text->DeleteLastLine(); }

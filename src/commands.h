@@ -22,7 +22,11 @@ private:
   std::string appended_string;
 
 public:
+  AppendLineCommand(Receiver *_text);
+
   AppendLineCommand(const string &_appended_string, Receiver *_text);
+
+  void SetAppendedString(const string &_appended_string);
 
   void Execute() override;
 
