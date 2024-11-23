@@ -6,7 +6,8 @@
 
 #include "commands.h"
 
-Shell::Shell(Receiver* _document) : document(_document) {}
+Shell::Shell(Receiver* _document, CommandHistory* _history)
+    : document(_document), history(_history) {}
 
 bool IsInt(const std::string& checked_string) {
   for (char c : checked_string) {
@@ -53,22 +54,16 @@ void Shell::RunUI() {
     }
     if (command_name == "u" || command_name == "r") {
       if (command_name == "u") {
-        if (undo_list.empty()) {
-          std::cout << "No previous actions" << '\n';
-          continue;
+        bool undo_result = history->UndoLast();
+        if (!undo_result) {
+          std::cout << "No changes before" << "\n";
         }
-        undo_list.top()->Undo();
-        redo_list.push(undo_list.top());
-        undo_list.pop();
       }
       if (command_name == "r") {
-        if (redo_list.empty()) {
+        bool redo_result = history->Redo();
+        if (!redo_result) {
           std::cout << "Nothing was undone" << '\n';
-          continue;
         }
-        redo_list.top()->Execute();
-        undo_list.push(redo_list.top());
-        redo_list.pop();
       }
       continue;
     }
@@ -121,18 +116,6 @@ void Shell::RunUI() {
       continue;
     }
     current_command->Execute();
-    ClearRedo();
-    undo_list.push(current_command);
-  }
-}
-
-Shell::~Shell() {
-  while (!undo_list.empty()) {
-    delete undo_list.top();
-    undo_list.pop();
-  }
-  while (!redo_list.empty()) {
-    delete redo_list.top();
-    redo_list.pop();
+    history->AddCommand(current_command);
   }
 }
