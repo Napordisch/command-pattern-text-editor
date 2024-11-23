@@ -12,7 +12,7 @@ void PrintDocWithNewlines(const Receiver &_text_doc) {
 
 int main() {
   CommandHistory history;
-  Receiver document("test start");
+  Receiver document("");
   Shell UI(&document, &history);
   UI.RunUI();
 }
